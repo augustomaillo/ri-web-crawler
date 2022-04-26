@@ -6,6 +6,7 @@ class CrawlingHandler:
     def __init__(self, queue : QueueHandler, threads:int) -> None:
         self._queue = queue
         self._is_crawling = [0] * threads
+        self._known_hosts = dict()
     
     def run(self, n) -> None:
         while True:
@@ -13,7 +14,7 @@ class CrawlingHandler:
             if url is not None:
                 self._is_crawling[n] = 1
                 print(url)
-                page = PageHandler(url=url)
+                page = PageHandler(url=url, known_hosts=self._known_hosts)
                 page.obtain()
                 print('+'*20)
             self._is_crawling[n] = 0
