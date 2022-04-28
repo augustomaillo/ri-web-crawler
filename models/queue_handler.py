@@ -7,19 +7,22 @@ class QueueHandler:
         heapify(self._heap)
         self.lock = Lock()
 
-    def insert_page(self, page : str, priority : int) -> None:
+    def insert_host(self, host : str, priority : int) -> None:
         self.lock.acquire()
-        heappush(self._heap, (priority, page))
+        heappush(self._heap, (priority, host))
         self.lock.release()
     
-    def next_page(self) -> str:
+    def next_host(self) -> str:
         self.lock.acquire()
         if len(self._heap) == 0:
-            page = None
+            host = None
         else:
-            page = heappop(self._heap)[1]
+            host = heappop(self._heap)[1]
         self.lock.release()
-        return page
+        return host
 
     def __len__(self) -> int:
         return len(self._heap)
+
+    def __str__(self) -> str:
+        return str(self._heap)
