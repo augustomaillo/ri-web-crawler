@@ -19,6 +19,3 @@ class ThreadingController:
     def join(self) -> None:
         for thread in self._thread_pool:
             thread.join()
-        
-
-            
