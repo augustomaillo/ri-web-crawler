@@ -27,5 +27,7 @@ python3 main.py -s my-seed-file.txt -n 1000
 * Write in many WARC files at same time for efficiency
 
 ## Contact
+
 Name: Augusto Maillo Q. de Figueiredo
+
 Email: augusto.maillo@gmail.com
